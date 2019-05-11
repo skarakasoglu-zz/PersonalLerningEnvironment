@@ -1,0 +1,23 @@
+﻿@using PLEApplication.Models
+@{
+    CourseViewModel CurrentCourse = (CourseViewModel)ViewBag.CurrentCourse;
+    ViewBag.Title = CurrentCourse.CourseCode + " - " + CurrentCourse.CourseName;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<script src="~/node_modules/core-js/client/shim.min.js"></script>
+<script src="~/node_modules/zone.js/dist/zone.js"></script>
+<script src="~/node_modules/systemjs/dist/system.src.js"></script>
+<!-- 2. Configure SystemJS -->
+
+<script src="~/Scripts/js/systemjs.config.js"></script>
+
+<script>
+    System.import('/Scripts/js/main.js').catch(function (err) {
+        console.error(err);
+    });
+</script>
+<base href="@Url.Action("Detail", "Course", new { CourseID = CurrentCourse.CourseID, RouteLink = ViewBag.RouteLink })" >
+<my-app></my-app>

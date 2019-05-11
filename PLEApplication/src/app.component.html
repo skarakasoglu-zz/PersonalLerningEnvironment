@@ -1,0 +1,40 @@
+﻿<ul id="myTab" class="nav nav-tabs bar_tabs">
+    <li role="presentation"  class="active">
+        <a role="tab" data-toggle="tab" routerLink="">Course</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Homeworks">Homeworks</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Grades">Grades</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Chapters">Chapters</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Materials">Materials</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Discussions">Discussions</a>
+    </li>
+    <li role="presentation">
+        <a role="tab" data-toggle="tab" routerLink="/Members">Members</a>
+    </li>
+</ul>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_content">
+                <div role="tabpanel" data-example-id="toggleable-tabs">
+                    <div class="tab-content">
+                        <div style="padding-left:60px;" role="tabpanel" class="tab-pane fade active in">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

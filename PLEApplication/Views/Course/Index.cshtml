@@ -1,0 +1,53 @@
+﻿@using PLEApplication.Models
+@{
+    ViewBag.Title = "Course List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu"></ul>
+                    </li>
+                    <li><a class="close-link"><i class="fa fa-close"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <my-app></my-app>
+                @{
+                    List<CourseViewModel> CourseList = (List<CourseViewModel>)ViewBag.Courses;
+                }
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (CourseViewModel course in CourseList)
+                        {
+                            <tr>
+                                <td>@Html.ActionLink(course.CourseCode, "Detail", new { CourseID = course.CourseID })</td>
+                                <td>@course.CourseName</td>
+                                <td>@course.DateCreated.ToLongDateString()</td>
+                                <td>@course.ParticipatorCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th *ngFor="let assignment of assignmentList">
+                {{ assignment.title }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of userList">
+            <td>{{ user.fullName }}</td>
+            <ng-container *ngFor="let grade of gradeList">
+                <td *ngIf="(grade.userID == user.userID)">{{ grade.points }}</td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>

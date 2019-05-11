@@ -1,0 +1,127 @@
+﻿@model PLEApplication.Models.UserViewModel
+@{
+    Layout = null;
+}
+
+
+
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Login Page | PLE </title>
+
+    <!-- Bootstrap -->
+    @Styles.Render("~/Content/css/bootstrap.min.css")
+    <!-- Font Awesome -->
+    @Styles.Render("~/fonts/css/font-awesome.min.css")
+    <!-- Animate.css -->
+    @Styles.Render("~/Content/css/animate.min.css")
+
+    <!-- Custom Theme Style -->
+    @Styles.Render("~/Content/css/custom.min.css")
+
+    @Scripts.Render("~/Scripts/js/jquery-1.10.2.min.js")
+    @Scripts.Render("~/Scripts/js/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/js/jquery.validate.unobtrusive.js")
+</head>
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <h1>Login Form</h1>
+                    <span style="color:red">@ViewBag.Message</span>
+                    @using (Html.BeginForm(FormMethod.Post))
+                    {
+                        <div class="item form-group bad">
+                            @Html.TextBoxFor(u => u.UserID, new { @class = "form-control", @placeholder = "Username" })
+                            @Html.ValidationMessageFor(u => u.UserID, "", new { @class= "error" })
+                        </div>
+                        <div class="item form-group bad">
+                            @Html.PasswordFor(u => u.UserPassword, new { @class = "form-control", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(u => u.UserPassword, "", new { @class = "error" })
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-default submit" value="Log in" />
+                        </div>
+                    }
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">
+                            New to site?
+                            <a href="#signup" class="to_register"> Create Account </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> PLE</h1>
+                            <p>©2017 All Rights Reserved. Personal Learning Environment </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="register" class="animate form registration_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("SignUp", "Account"))
+                    {
+
+                        <h1>Create Account</h1>
+                        <div>
+                            @Html.TextBoxFor(u => u.UserID, new { @class = "form-control", @placeholder = "Username" })
+                            @Html.ValidationMessageFor(u => u.UserID, "", new { @class = "error" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(u => u.Email, new { @class = "form-control", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(u => u.Email, "", new { @class = "error" })
+                        </div>
+                        <div>
+                            @Html.TextBoxFor(u => u.FullName, new { @class = "form-control", @placeholder = "Your full name" })
+                            @Html.ValidationMessageFor(u => u.FullName, "", new { @class = "error" })
+                        </div>
+                        <div>
+                            @Html.PasswordFor(u => u.UserPassword, new { @class = "form-control", @placeholder = "Password" })
+                            @Html.ValidationMessageFor(u => u.UserPassword, "", new { @class = "error" })
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-default submit" value="Sign Up" />
+                        </div>
+                    }
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">
+                            Already a member ?
+                            <a href="#signin" class="to_register"> Log in </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br>
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> PLE</h1>
+                            <p>©2017 All Rights Reserved. Personal Learning Environment</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
